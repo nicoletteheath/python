@@ -12,15 +12,16 @@ print(foods[6][-1])
 # question 2
 
 mailing_list = [
-    ["Rory", "roary@moth.catchers"]
+    ["Rory", "roary@moth.catchers"],
+    ["remus", "remus@kapers.dog"],
+    ["Prince Thomas of Whitepaw", "hrh.thomas@royalty.wp"],
+    ["Biscuit", "biscuit@whippies.park"],
+    ["Rory", "rory@whippies.park"],
 ]
 
-#how do you get data out of a loop
+for cat_name in mailing_list:
+    print(f"{mailing_list[0]} cats:")
+    for cat in mailing_list[1:]:
+        print(f"    {cat}")
 
-my_list = []
 
-while len(my_list) < 5:
-    my_var = input("give me a number")
-    my_list.append(my_var)
-
-print(my_list)

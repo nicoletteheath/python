@@ -70,3 +70,15 @@ print(black_teas)
 
 if "Chai" in black_teas:
     print("Yay! we have chai!")
+
+
+
+#how do you get data out of a loop
+
+my_list = []
+
+while len(my_list) < 5:
+    my_var = input("give me a number")
+    my_list.append(my_var)
+
+print(my_list)
