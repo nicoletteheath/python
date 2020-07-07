@@ -9,6 +9,7 @@ print(foods[0:3])
 print(foods[7:11]) #treat everything in the list within a list as one item
 print(foods[6][-1])
 
+
 # question 2
 
 mailing_list = [
@@ -19,9 +20,26 @@ mailing_list = [
     ["Rory", "rory@whippies.park"],
 ]
 
-for cat_name in mailing_list:
-    print(f"{mailing_list[0]} cats:")
-    for cat in mailing_list[1:]:
-        print(f"    {cat}")
+for item in mailing_list:
+    print(f"{item[0]}: {item[1]}")
+
+
+# question 3
+
+counter = 0
+name_list = []
+while counter < 3:
+    name = input("Type a name ")
+    name_list.append(name)
+    counter = counter + 1
+#print(name_list)
+for item in name_list:
+    print(item)
+
+#question 4
+
+user_string = input("Enter a String")
+list(user_string)
+
 
 

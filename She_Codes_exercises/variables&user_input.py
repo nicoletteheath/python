@@ -37,8 +37,19 @@ b = "="
 print(first_float, a, second_int, b, result)
 
 # question 3
-km_distance = 10
-m_distance = km_distance * 100
+print("Enter a distance in km")
+distance_km = input()
+#finish this off once I have done functions
+
+
+#question 4
+print("What is your name?")
+name = input()
+
+print("what is your height in cms?")
+height = input()
+
+print(name + " is " + height + "cms tall")
 
 
 

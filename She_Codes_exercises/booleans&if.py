@@ -40,11 +40,10 @@ if light_colour_is_amber and car_detected:
     print("Do nothing") 
 
 # question 4
-height_promtp = input("what is your height in cms?")
+print("What is your height in cm?")
+height = int(input())
 
-height_promtp < 120 = True
-
-if height_promtp:
+if height <= 120:
     print("Hop on!")
 else:
     print("Sorry, not today :(")
