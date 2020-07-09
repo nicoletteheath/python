@@ -29,7 +29,7 @@ for item in mailing_list:
 counter = 0
 name_list = []
 while counter < 3:
-    name = input("Type a name ")
+    name = input("Type a name: ")
     name_list.append(name)
     counter = counter + 1
 #print(name_list)
@@ -38,8 +38,16 @@ for item in name_list:
 
 #question 4
 
-user_string = input("Enter a String")
-list(user_string)
+user_string = input("Type: This is a String ")
+my_string_list = user_string.split()
+print(f'{len(my_string_list)} {my_string_list}')
+
+print(f'{len(list(user_string))} {list(user_string)}')
 
 
+user_string = input("Type: What a lovely day! ")
+my_string_list = user_string.split()
+print(f'{len(my_string_list)} {my_string_list}')
+
+print(f'{len(list(user_string))} {list(user_string)}')
 

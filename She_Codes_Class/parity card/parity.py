@@ -9,6 +9,18 @@ def add_column(grid):
     Returns:
         The same grid, with a new column added.
     """
+    # add a new item to the end of list aka "row in the grid"
+    # for each row in the grid
+    #   counter = 0
+    #   for each item in the row
+    #       if item is x, then icrement counter
+    #   if the counter%2 remainder is not 0
+    #       add x to the row
+    #   else
+    #       add 0 to row
+    #return grid
+    
+
     pass
 
 def add_row(grid):
