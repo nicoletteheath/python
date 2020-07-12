@@ -7,7 +7,7 @@
 # a = 3
 # b = 5
 # addition(a, b)
-# addition_result = additino(b, a)
+# addition_result = addition(b, a)
 # print(addition_result)
 
 

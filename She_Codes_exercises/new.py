@@ -1,71 +1,26 @@
 
 
+groceries = [
+    ["Baby Spinach", 2.78],
+    ["Hot Chocolate", 3.70],
+    ["Crackers", 2.10],
+    ["Bacon", 9.00],
+    ["Carrots", 0.56],
+    ["Oranges", 3.08]
+]
 
+total = 0
 
+for item in groceries:
+    number_of_items = input(f"how many units of {item[0]} did you buy? ")
+    total_cost_of_item = item[1] * int(number_of_items)
+    print(total_cost_of_item)
+    total = total + total_cost_of_item
 
+total = f"${total:.2f}"
 
-
-
-
-
-
-
-
-
-
-
-
-number = input("Enter a number: ")
-number_list = []
-while number != "":
-    number = input("Enter a number: ")
-    number_list.append(number)
-print(number_list)
-
-total = sum(number_list)
-print(total)
-
-
-
-
-
-
-
-
-
-# number = int(input("Enter a number: "))
-# number_list = []
-# while number != "":
-#     number = int(input("Enter a number: "))
-#     number_list.append(number)
-# total = sum(number_list)
-# print(total)
-
-
-
-
-
-# number_list = [5, 5, 5, 5]
-# total = sum(number_list)
-# print(total)
-
-
-
-
-
-# number = 0
-# number_list = []
-# while len(number) > 1
-#     print("Enter a number: ")
-#     number = input()
-#     number_list.append(number)
-# for item in number_list:
-#     print(item)
-
-#     name = ""
-# while True: #this will always be true
-#     print("Please type your name.")
-#     name = input()
-#     if name == "your name": #the if statement is used to break out of the loop
-#         break   #the break is what actually breaks out of the loop 
-# print("Thank you")
+print("====Izzy's Food Emporium====")
+for item in groceries:
+    print(f"{item[0]:<20} ${total_cost_of_item:.2f}")
+print("============================")
+print(f"{total:>27}")

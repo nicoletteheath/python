@@ -3,7 +3,7 @@ names = []
 with open("names.txt") as txt_file: #txt_file is a variable can be called whatever. #with open puts everything in the block to extract then closes automatically
     for line in txt_file:
         print(line)
-        line = line.strip() #removed the \n from the list (new line character)
+        line = line.strip() #removed the \n from the list (new line character). If don't specify what to strip will remove blank line
         names.append(line)
 
 print(names)

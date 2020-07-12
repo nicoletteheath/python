@@ -1,6 +1,17 @@
 
 # question 1
+output_numbered_list = False
+number_list = []
+while output_numbered_list == False:
+    number = input("Enter a number: ")
+    if number == "":
+        output_numbered_list = True
+    else:
+        number_list.append(int(number))
+print(number_list)
 
+total = sum(number_list)
+print(total)
 
 
 # question 2
