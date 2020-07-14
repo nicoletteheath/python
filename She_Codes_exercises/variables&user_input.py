@@ -37,8 +37,7 @@ b = "="
 print(first_float, a, second_int, b, result)
 
 # question 3
-print("Enter a distance in km")
-distance_km = input()
+distance_km = input("Enter a distance in km")
 #finish this off once I have done functions
 
 
