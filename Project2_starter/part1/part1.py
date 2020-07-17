@@ -33,7 +33,8 @@ def convert_f_to_c(temp_in_farenheit):
     Returns:
         An integer representing a temperature in degrees celcius.
     """
-    pass
+    celsius_temperature = (float(temp_in_farenheit) - 32.0) * 5.0 / 9.0
+    return celsius_temperature
 
 
 def calculate_mean(total, num_items):
@@ -45,7 +46,8 @@ def calculate_mean(total, num_items):
     Returns:
         An integer representing the mean of the numbers.
     """
-    pass
+    mean = total / num_items
+    return mean
 
 
 def process_weather(forecast_file):
@@ -58,10 +60,49 @@ def process_weather(forecast_file):
         A string containing the processed and formatted weather data.
     """
     pass
+    # with open(forecast_file) as json_file:
+    #     forecast_data = json.load(json_file)
+    #     return forecast_data
+    
+    #print(forecast_data)
+
+# if __name__ == "__main__":
+#     print(process_weather("data/forecast_5days_a.json"))
 
 
-if __name__ == "__main__":
-    print(process_weather("data/forecast_5days_a.json"))
+
+with open("data/forecast_5days_a.json") as json_file:
+        forecast_data = json.load(json_file)
+
+
+overall_minimum_temp = []
+overall_maximum_temp = []
+
+for forecast in forecast_data["DailyForecasts"]:
+    overall_minimum_temp.append(convert_f_to_c(forecast["Temperature"]["Minimum"]["Value"]))
+    overall_maximum_temp.append(convert_f_to_c(forecast["Temperature"]["Maximum"]["Value"]))
+    
+
+# calculating average low for 5 Day Overview
+total_overall_minimum_temp = sum(overall_minimum_temp)
+number_minimum_temps = len(overall_minimum_temp)
+average_low = calculate_mean((total_overall_minimum_temp), (number_minimum_temps))
+# print(average_low)
+
+#calculating average high for 5 Day Overview
+total_overall_maximum_temp = sum(overall_maximum_temp)
+number_maximum_temps = len(overall_maximum_temp)
+average_high = calculate_mean((total_overall_maximum_temp), (number_maximum_temps))
+# print(average_high)
+
+
+print(f"""5 Day Overview \n
+        The Lowest temperature will be {min(overall_minimum_temp):.1f}, and will occur on ADD DATE HERE!!!! \n
+        The heighest temperature will be {max(overall_maximum_temp):.1f}, and will occur on ADD DATE HERE!!!!\n 
+        The average low this week is {(average_low):.1f} \n 
+        The average high this week is {(average_high):.1f} \n 
+""")
+
 
 
 

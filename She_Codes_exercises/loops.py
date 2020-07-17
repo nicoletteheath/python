@@ -68,7 +68,7 @@ for item in groceries:
 print("====Izzy's Food Emporium====")
 for item in groceries:
     item_name = item[0]
-    print(f"{item_name:<20} ${grocery_bill[item_name]:.2f}")
+    # print(f"{item_name:<20} ${grocery_bill[item_name]:.2f}")
 print("============================")
 print(f"${total:>27.2f}")
 
