@@ -33,7 +33,9 @@ def convert_f_to_c(temp_in_farenheit):
     Returns:
         An integer representing a temperature in degrees celcius.
     """
-    celsius_temperature = (float(temp_in_farenheit) - 32.0) * 5.0 / 9.0
+    
+    celsius_temperature_conversion = (float(temp_in_farenheit - 32.0)) * 5.0 / 9.0
+    celsius_temperature = round(celsius_temperature_conversion,1)
     return celsius_temperature
 
 
@@ -94,23 +96,22 @@ def process_weather(forecast_file):
         if highest_temp < maximum_temp:
             highest_temp = maximum_temp
             highest_day = date
+        summary_script = f"""-------- {date} -------- \nMinimum Temperature: {format_temperature(minimum_temp)}\nMaximum Temperature: {format_temperature(maximum_temp)}\nDaytime: {day_long_phase} 
+              Chance of rain: {day_chance_rain} 
+        Nightime: {night_long_phase} 
+              Chance of rain: {night_chance_rain} \n \n \n """
+        daily_summary.append(summary_script)
+   
+ 
+    #return daily_summary
+
+ 
 
 
-
-
-
-        daily_summary.append(f"{date} {minimum_temp} {maximum_temp} {day_long_phase} {day_chance_rain} {night_long_phase} {night_chance_rain}")
-
-    #print(daily_summary)
-
-
-
-
-
-    # # calculating average low for 5 Day Overview
+    # calculating average low for 5 Day Overview
     total_overall_minimum_temp = sum(overall_minimum_temp)
     number_minimum_temps = len(overall_minimum_temp)
-    average_low = calculate_mean((total_overall_minimum_temp), (number_minimum_temps))
+    average_low = round(calculate_mean((total_overall_minimum_temp), (number_minimum_temps)),1)
     # # print(average_low)
 
     # #calculating average high for 5 Day Overview
@@ -120,28 +121,51 @@ def process_weather(forecast_file):
     # print(average_high)
 
 
-    print(f"""5 Day Overview \n
-            The Lowest temperature will be {min(overall_minimum_temp):.1f}, and will occur on {coldest_day}. \n
-            The heighest temperature will be {max(overall_maximum_temp):.1f}, and will occur on {highest_day}. \n 
-            The average low this week is {(average_low):.1f}. \n 
-            The average high this week is {(average_high):.1f}. \n 
-    """)
+   
 
+    # for each_day in forecast_data["DailyForecasts"]:
+    #     summary_script = f"""-------- {convert_date(each_day["Date"])} -------- \n
+    #     Minimum Temperature: {format_temperature(each_day["Temperature"]["Minimum"]["Value"])} \n 
+    #     Maximum Temperature: {format_temperature(each_day["Temperature"]["Maximum"]["Value"])} \n 
+    #     Daytime: {each_day["Day"]["LongPhrase"]} \n 
+    #           Chance of rain: {each_day["Day"]["RainProbability"]} \n 
+    #     Nightime: {each_day["Night"]["LongPhrase"]} \n 
+    #           Chance of rain: {each_day["Night"]["RainProbability"]} \n \n \n """
+    #     if coldest_temp is None:
+    #         coldest_temp = each_day["Temperature"]["Minimum"]["Value"]
+    #         coldest_day = convert_date(each_day["Date"])
+    #     if each_day["Temperature"]["Minimum"]["Value"] < coldest_temp:
+    #         coldest_temp = each_day["Temperature"]["Minimum"]["Value"]
+    #         coldest_day = convert_date(each_day["Date"])
+    #     if highest_temp is None:
+    #         highest_temp = each_day["Temperature"]["Maximum"]["Value"]
+    #         highest_day = convert_date(each_day["Date"])
+    #     if highest_temp < each_day["Temperature"]["Maximum"]["Value"]:
+    #         highest_temp = each_day["Temperature"]["Maximum"]["Value"]
+    #         highest_day = convert_date(each_day["Date"])
+    #     print(summary_script)
+    #     print(coldest_temp, coldest_day, highest_temp, highest_day)
+
+
+
+
+    overview = f""" 5 Day Overview \n
+            The Lowest temperature will be {format_temperature(min(overall_minimum_temp))}, and will occur on {coldest_day}. \n
+            The heighest temperature will be {format_temperature(max(overall_maximum_temp))}, and will occur on {highest_day}. \n 
+            The average low this week is {format_temperature(average_low)}. \n 
+            The average high this week is {format_temperature(average_high)}. \n \n \n 
+            """
+    daily_summary.insert(0, overview)
+    final_summary = "".join(daily_summary)
+    return final_summary
+
+    # return overview, final_summary
+
+    # final_data = f"{overview} {summary_script}"
+    # return final_data
 
 
 if __name__ == "__main__":
     print(process_weather("data/forecast_5days_a.json"))
 
-
-
-with open("data/forecast_5days_a.json") as json_file:
-        forecast_data = json.load(json_file)
-
-
-
-
-
-
-
-
-
+ 
