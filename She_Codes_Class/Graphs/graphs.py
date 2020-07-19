@@ -15,7 +15,7 @@ fig = px.line(
     y=["NSW","Vic","Qld","SA","WA","Tas","NT","ACT"],
     title="Australian Populaton by State"
 )
-#fig.show()
+fig.show()
 
 # Line ### potentially use for project??????
 df_a = {
@@ -37,7 +37,7 @@ fig = px.scatter(
 
 # Barchart
 fig = px.bar(df, x="year", y=["NSW"])
-fig.show()
+# fig.show()
 
 fig = px.bar(
     df,

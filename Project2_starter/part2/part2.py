@@ -1,8 +1,9 @@
 import json
+from datetime import datetime
 import plotly.express as px
 import pandas as pd
 
-with open("data/forecast_5days_a.json") as json_file:
+with open("data/forecast_10days.json") as json_file:
     forecast_data = json.load(json_file)
 
 
@@ -29,19 +30,26 @@ for data in forecast_data["DailyForecasts"]:
     minimum_real_feel.append(convert_f_to_c(data["RealFeelTemperature"]["Minimum"]["Value"]))
     minimum_real_feel_shade.append(convert_f_to_c(data["RealFeelTemperatureShade"]["Minimum"]["Value"]))
 
+
 df = {
-    "Minimum": minimum_temps
-    "Maximum": maximum_temps
+    "Minimum": minimum_temps,
+    "Maximum": maximum_temps,
     "Date": dates
 }
-fig = px.line(df, y="Minimum", x="Date", title=f"Minimum and maximum temperatures over a {len(minimum_temps)} day period")
+fig = px.line(df, y=["Minimum", "Maximum"], x="Date", title=f"Minimum and maximum temperatures over a {len(minimum_temps)} day period")
 fig.show()
 
+df = {
+    "Minimum": minimum_temps,
+    "Minimum Real Feel": minimum_real_feel,
+    "Minimum Real Feel Shade": minimum_real_feel_shade,
+    "Date": dates
+}
 
-# df_a = {
-#     "our_data": [123, 132, 654, 345, 125, 498],
-#     "more_data": [345, 67, 176, 245, 197, 391],
-#     "columns": ["a", "b", "c", "d", "e", "f"]
-# }
-# fig = px.line(df_a, y="our_data", x="columns")
-# #fig.show()
+fig = px.line(
+    df, 
+    y=["Minimum","Minimum Real Feel","Minimum Real Feel Shade"], 
+    x="Date", 
+    title=f"Minimum, minimum real feel and minimum real feel shade temperatures over a {len(minimum_temps)} day period")
+fig.show()
+
