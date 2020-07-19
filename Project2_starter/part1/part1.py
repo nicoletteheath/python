@@ -61,7 +61,6 @@ def process_weather(forecast_file):
     Returns:
         A string containing the processed and formatted weather data.
     """
-    pass
     with open(forecast_file) as json_file:
        forecast_data = json.load(json_file)
   
@@ -151,6 +150,9 @@ def process_weather(forecast_file):
 
 if __name__ == "__main__":
     print(process_weather("data/forecast_5days_a.json"))
+    print(process_weather("data/forecast_5days_b.json"))
+    print(process_weather("data/forecast_10days.json"))
+    
  
 
  
