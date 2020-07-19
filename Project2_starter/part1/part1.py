@@ -48,7 +48,7 @@ def calculate_mean(total, num_items):
     Returns:
         An integer representing the mean of the numbers.
     """
-    mean = total / num_items
+    mean = round((total / num_items),1)
     return mean
 
 
@@ -106,7 +106,7 @@ def process_weather(forecast_file):
     #calculating average low for 5 Day Overview
     sum_of_minimum_temps = sum(minimum_temps)
     number_minimum_temps = len(minimum_temps)
-    average_low = round(calculate_mean((sum_of_minimum_temps), (number_minimum_temps)),1)
+    average_low = calculate_mean((sum_of_minimum_temps), (number_minimum_temps))
     # print(average_low)
 
     #calculating average high for 5 Day Overview
@@ -116,39 +116,41 @@ def process_weather(forecast_file):
     # print(average_high)
 
 
-    line = "5 Day Overview \n"
+    line = f"{len(minimum_temps)} Day Overview"
     output.append(line)
-    line2 = f"      The lowest temperature will be {format_temperature(min(minimum_temps))}, and will occur on {coldest_day}.\n"
+    line2 = f"    The lowest temperature will be {format_temperature(min(minimum_temps))}, and will occur on {coldest_day}."
     output.append(line2)
-    line3 = f"      The highest temperature will be {format_temperature(max(maximum_temps))}, and will occur on {highest_day}.\n"
+    line3 = f"    The highest temperature will be {format_temperature(max(maximum_temps))}, and will occur on {highest_day}."
     output.append(line3)
-    line4 = f"      The average low this week is {format_temperature(average_low)}.\n"
+    line4 = f"    The average low this week is {format_temperature(average_low)}."
     output.append(line4)
-    line5 = f"      The average high this week is {format_temperature(average_high)}.\n \n \n"
+    line5 = f"    The average high this week is {format_temperature(average_high)}.\n"
     output.append(line5)
-    # print(output)
+   
 
-    for x in range(5):
-        dsline = f"--------{dates[x]}--------\n"
+    for x in range(len(dates)):
+        dsline = f"-------- {dates[x]} --------"
         output.append(dsline)
-        dsline2 = f"Minimum Temperature: {format_temperature(minimum_temps[x])}\n"
+        dsline2 = f"Minimum Temperature: {format_temperature(minimum_temps[x])}"
         output.append(dsline2)
-        dsline3 = f"Minimum Temperature: {format_temperature(maximum_temps[x])}\n"
+        dsline3 = f"Maximum Temperature: {format_temperature(maximum_temps[x])}"
         output.append(dsline3)
-        dsline4 = f"Daytime: {day_long_phase[x]}\n"
+        dsline4 = f"Daytime: {day_long_phase[x]}"
         output.append(dsline4)
-        dsline5 = f"    Chance of rain: {day_chance_rain[x]} % \n"
+        dsline5 = f"    Chance of rain:  {day_chance_rain[x]}%"
         output.append(dsline5)
-        dsline6 = f"Nighttime: {night_long_phase[x]}\n"
+        dsline6 = f"Nighttime: {night_long_phase[x]}"
         output.append(dsline6)
-        dsline7 = f"    Chance of rain: {night_chance_rain[x]} % \n \n \n"
+        dsline7 = f"    Chance of rain:  {night_chance_rain[x]}%\n"
         output.append(dsline7)
 
-    final_output = "".join(output)
+    final_output = "\n".join(output)
+    final_output = final_output + "\n"
     return final_output
 
 
 if __name__ == "__main__":
-   print(process_weather("data/forecast_5days_a.json"))
+    print(process_weather("data/forecast_5days_a.json"))
+ 
 
  
